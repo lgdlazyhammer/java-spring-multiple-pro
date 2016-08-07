@@ -1,0 +1,14 @@
+package com.controller;
+
+import com.entity.UserEntity;
+
+@Controller
+@RequestMapping("/index")
+public class IndexController {
+
+	@RequestMapping("/index")
+	public ModelAndView index() {	
+		UserEntity user = new UserEntity("peter", "123456");
+		return new ModelAndView("index","user", user);
+	}
+}

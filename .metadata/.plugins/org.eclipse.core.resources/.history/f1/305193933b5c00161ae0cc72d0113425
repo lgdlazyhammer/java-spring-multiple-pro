@@ -1,0 +1,22 @@
+package com.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.entity.UserEntity;
+import com.service.UserService;
+
+@Controller
+@RequestMapping("/index")
+public class IndexController {
+
+	@RequestMapping("/index")
+	public ModelAndView index() {	
+		UserService userService = new UserService();
+		UserEntity user = userService.getUserById();
+		UserEntity user2 = new UserService().getUserById();
+		
+		return new ModelAndView("index","user", user);
+	}
+}

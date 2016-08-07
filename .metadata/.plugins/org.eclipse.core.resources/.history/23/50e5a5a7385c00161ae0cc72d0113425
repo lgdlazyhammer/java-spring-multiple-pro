@@ -1,0 +1,23 @@
+package com.service;
+
+public class UserService {
+
+	public void getUserById() {
+		
+		String resource = "com/ibatis/mapper/mybatis-config.xml";
+		InputStream inputStream;
+		try {
+			inputStream = Resources.getResourceAsStream(resource);
+			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder()
+					.build(inputStream);
+
+			SqlSession session = sqlSessionFactory.openSession();
+			UserMapper mapper = session.getMapper(UserMapper.class);
+			UserEntity user = mapper.selectUser(1);
+			System.out.println("select user: " + user.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
